@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feature Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2, h3 {
+            color: #2f6b2f;
+        }
+
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            margin: 10px 0;
+            display: block;
+        }
+
+        input[type="text"], select, button {
+            width: 80%; /* Adjusted width for inputs and buttons */
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            box-sizing: border-box; /* To prevent the box sizing issue */
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .feedback, .rating, .transform {
+            margin-bottom: 30px;
+        }
+
+        .logout-btn {
+            background-color: #f44336;
+            width: auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .logout-btn:hover {
+            background-color: #e60000;
+        }
+
+        .radio-btn-group {
+            text-align: left;
+            margin-top: 10px;
+            width: 80%; /* Centering radio button group */
+            margin: 0 auto; /* To center radio buttons */
+        }
+
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Feature Page</h1>
+
+        <div class="transform">
+            <h2>Transform Your Text</h2>
+            <form action="/feature" method="post">
+                <label for="text">Enter text:</label>
+                <input type="text" id="text" name="text" required>
+                <br>
+                <label for="transformation">Choose Transformation:</label>
+                <select id="transformation" name="transformation" required>
+                    <option value="uppercase">Uppercase</option>
+                    <option value="lowercase">Lowercase</option>
+                    <option value="reverse">Reverse Text</option>
+                </select>
+                <br>
+                <input type="hidden" name="action" value="transform">
+                <button type="submit">Transform</button>
+            </form>
+        </div>
+
+        <!-- Display Transformed Text -->
+        <div class="transformed-text">
+            <h2>Transformed Text</h2>
+            <p>{{ transformed_text }}</p>
+        </div>
+
+        <!-- Rating System with Radio Buttons -->
+        <div class="rating">
+            <h2>Rate the Feature</h2>
+            <form action="/feature" method="post">
+                <div class="radio-btn-group">
+                    <label>
+                        <input type="radio" name="rating" value="1" required> 1 Star
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="2"> 2 Stars
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="3"> 3 Stars
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="4"> 4 Stars
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="5"> 5 Stars
+                    </label>
+                </div>
+                <br>
+                <h2>Give your feedback</h2>
+                <div class="radio-btn-group">
+                    <label>
+                        <input type="radio" name="feedback" value="Good" required> Good
+                    </label>
+                    <label>
+                        <input type="radio" name="feedback" value="Average"> Average
+                    </label>
+                    <label>
+                        <input type="radio" name="feedback" value="Bad"> Bad
+                    </label>
+                </div>
+                <input type="hidden" name="action" value="submit">
+                <button type="submit" style="margin-top: 50px;">Submit</button> <!-- Added margin-top to lower the submit button -->
+            </form>
+        </div>
+
+        <!-- Logout Button (positioned below submit button) -->
+        <form action="/logout" method="get">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+</body>
+</html>

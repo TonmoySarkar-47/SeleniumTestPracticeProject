@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5; 
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            color: #2f6b2f;
+        }
+
+        .text-section, .transformed-text, .rating, .feedback {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        .back-btn {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Results</h1>
+
+        {% if given_text %}
+        <div class="text-section">
+            <h2>Given Text:</h2>
+            <p>{{ given_text }}</p>
+        </div>
+        {% endif %}
+
+        {% if transformed_text %}
+        <div class="transformed-text">
+            <h2>Transformed Text:</h2>
+            <p>{{ transformed_text }}</p>
+        </div>
+        {% endif %}
+
+        {% if rating %}
+        <div class="rating">
+            <h2>Your Rating:</h2>
+            <p>{{ rating }} Stars</p>
+        </div>
+        {% else %}
+        <div class="rating">
+            <h2>Your Rating:</h2>
+            <p>No rating provided.</p>
+        </div>
+        {% endif %}
+
+        {% if feedback %}
+        <div class="feedback">
+            <h2>Your Feedback:</h2>
+            <p>{{ feedback }}</p>
+        </div>
+        {% else %}
+        <div class="feedback">
+            <h2>Your Feedback:</h2>
+            <p>No feedback provided.</p>
+        </div>
+        {% endif %}
+
+        <form action="{{ url_for('feature') }}" method="GET">
+            <button type="submit" class="back-btn">Back to Feature</button>
+        </form>
+    </div>
+
+</body>
+</html>
